@@ -1,6 +1,6 @@
 @props(['post'])
 <div class="">
-    <form action="{{ route('posts.destroy', $post->id)}}" method="POST">
+    <form action="{{ route('posts.destroy', $post->id)}}" method="POST" onsubmit="return confirm('You are sure ?')">
         @csrf
         @method('DELETE')
         <button class="btn btn-error">Delete</button>

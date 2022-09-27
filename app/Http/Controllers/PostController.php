@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         // 1- Retrieve all post from models Post and saved in variable
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->limit(4)->get();
         // dd($posts);
         // 2- Send data to view
         return view('pages.homePage', compact('posts'));
@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -40,7 +40,21 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'title' => 'required|min:5|string|max:180|unique:posts,title',
+            'Content' => 'required|min:20|max:350|string'
+        ]);
+
+        Post::create([
+            'title' => $request->title,
+            'Content' => $request->Content,
+            'url_img' => $request->url_img,
+            'created_at' => now()
+        ]);
+        return redirect()
+        ->route('home')
+        ->with('status', 'Le post a bien été ajouté');
     }
 
     /**
