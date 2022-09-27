@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // 1- Retrieve all post from models Post and saved in variable
+        $posts = Post::all();
+        // dd($posts);
+        // 2- Send data to view
+        return view('pages.homePage', compact('posts'));
     }
 
     /**
@@ -47,7 +51,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        // dd($post);
+        return view('pages.show', compact('post'));
     }
 
     /**
@@ -81,6 +86,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()
+            ->route('home')
+            ->with('status', "L'article a bien été supprimé");
     }
 }

@@ -13,6 +13,7 @@
 </head>
 <body>
 @include('components.nav.nav')
+@include(('partials._session'))
     {{ $slot }}
     
 </body>
