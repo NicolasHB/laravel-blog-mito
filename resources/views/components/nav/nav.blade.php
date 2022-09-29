@@ -1,6 +1,6 @@
 <div class="navbar bg-blue-400">
-  <div class="flex-1">
-    <a class="btn btn-ghost normal-case text-xl">MITO Blog</a>
+  <div class="flex-1" id="logo">
+    <a class="btn btn-ghost normal-case text-xl" >MITO Blog</a>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal p-0">
@@ -12,10 +12,12 @@
         </a>
         <ul class="p-2 bg-base-100">
           <li><a href="{{ route('posts.create') }}">Add Articles</a></li>
-          <li><a>Submenu 2</a></li>
+          <li><a href="/about" >About</a></li>
         </ul>
       </li>
-      <li><a href="/about">About</a></li>
+      <div class="" id="navitem">
+        <li><a href="{{ route('posts.create') }}">Add Articles</a></li>
+      </div>
     </ul>
   </div>
 </div>
