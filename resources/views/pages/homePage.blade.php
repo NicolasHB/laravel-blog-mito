@@ -1,7 +1,7 @@
 <x-layouts.main-layout
 title="Accueil"
 >
-<div class="container">
+<div class="pr-20 pl-20">
     <p class="text-center text-4xl pt-9 pb-9 font-black">Mito Blog | Laravel</p>
         <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-3" id="container_card">
             @forelse ($posts as $post )

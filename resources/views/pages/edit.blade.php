@@ -3,7 +3,7 @@ title="Add Articles"
 > 
 <div class="container">
     <h1 class="font-bold text-4xl pb-10 py-10 text-center">Update Post</h1>
-    <form class="" action="{{ route('posts.update', $post->id) }}" method="POST">
+    <form class="" action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="">
@@ -19,7 +19,12 @@ title="Add Articles"
                 <input @checked(old('is_published', $post->is_published)) name="is_published" type="checkbox" value="is_published">
             </div>
             {{-- IMG --}}
-            <input type="text" name="url_img" id="" class="block w-full rounded-lg border border-gray-400 mt-5" placeholder="insérer votre image" value="https://source.unsplash.com/640x480/?person?/1">
+            <div class="">
+                <label for="">choose to picture</label>
+                <input type="file" name="url_img" id="" class="block w-full rounded-lg border border-gray-400 mt-5">
+            <x-error-msg name="url_img" />
+            </div>
+            {{-- <input type="text" name="url_img" id="" class="block w-full rounded-lg border border-gray-400 mt-5" placeholder="insérer votre image" value="https://source.unsplash.com/640x480/?person?/1"> --}}
             <div class="pt-5">
                 <button class="btn btn-primary">Submit</button>
             </div>

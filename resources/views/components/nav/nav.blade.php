@@ -1,3 +1,6 @@
+@php
+  $idCo = 'hover:text-white hover:underline'
+@endphp
 <div class="navbar bg-blue-400">
   <div class="flex-1" id="logo">
     <a class="btn btn-ghost normal-case text-xl" >MITO Blog</a>
@@ -13,10 +16,21 @@
         <ul class="p-2 bg-base-100">
           <li><a href="{{ route('posts.create') }}">Add Articles</a></li>
           <li><a href="/about" >About</a></li>
+
         </ul>
       </li>
       <div class="" id="navitem">
-        <li><a href="{{ route('posts.create') }}">Add Articles</a></li>
+        {{-- <li><a href="{{ route('posts.create') }}">Add Articles</a></li> --}}
+        @guest
+          <li><a class="{{ $idCo }}" href="{{ route('dashboard')}}">Dashboard</a></li>
+          <li><a class="{{ $idCo }}" href="{{ route('login')}}">Connexion</a></li>
+          <li><a class="{{ $idCo }}" href="{{ route('register')}}">Inscription</a></li>
+        @endguest
+        @auth
+        
+        <x-btn-logout />
+        <span class="hover:underline">{{ Auth::user()->name }}</span>
+        @endauth
       </div>
     </ul>
   </div>
