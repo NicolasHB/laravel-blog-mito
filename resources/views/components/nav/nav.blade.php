@@ -22,12 +22,12 @@
       <div class="" id="navitem">
         {{-- <li><a href="{{ route('posts.create') }}">Add Articles</a></li> --}}
         @guest
-          <li><a class="{{ $idCo }}" href="{{ route('dashboard')}}">Dashboard</a></li>
-          <li><a class="{{ $idCo }}" href="{{ route('login')}}">Connexion</a></li>
-          <li><a class="{{ $idCo }}" href="{{ route('register')}}">Inscription</a></li>
+        <li><a class="{{ $idCo }}" href="{{ route('login')}}">Connexion</a></li>
+        <li><a class="{{ $idCo }}" href="{{ route('register')}}">Inscription</a></li>
         @endguest
         @auth
         
+        <li><a class="{{ $idCo }}" href="{{ route('dashboard')}}">Dashboard</a></li>
         <x-btn-logout />
         <span class="hover:underline">{{ Auth::user()->name }}</span>
         @endauth
